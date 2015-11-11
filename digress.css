@@ -1,0 +1,42 @@
+.digress-trigger {
+  position: relative;
+  cursor: pointer;
+}
+.digress-trigger.active { }
+
+.digress-note {
+  position: absolute;
+  visibility: hidden;
+  width: 250px;
+  max-height: 150px;
+  overflow: scroll;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 20;
+}
+.digress-note.visible {
+  visibility: visible;
+  -webkit-animation: digress-popin 250ms cubic-bezier(0.250, 0.250, 0.000, 1);
+  -webkit-animation: digress-popin 250ms cubic-bezier(0.250, 0.250, 0.000, 1.395);
+  -moz-animation: digress-popin 250ms cubic-bezier(0.250, 0.250, 0.000, 1.395);
+  -o-animation: digress-popin 250ms cubic-bezier(0.250, 0.250, 0.000, 1.395);
+  animation: digress-popin 250ms cubic-bezier(0.250, 0.250, 0.000, 1.395);
+}
+
+@-webkit-keyframes digress-popin {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}
+@-moz-keyframes digress-popin {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}
+@-o-keyframes digress-popin {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}
+@keyframes digress-popin {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}
