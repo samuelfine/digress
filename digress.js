@@ -55,8 +55,8 @@ var digress = function() {
     }
 
     trig.e.addEventListener('click', function() {
-      trig.e.classList.toggle('active');
-      note.e.classList.toggle('visible');
+      this.classList.toggle('active');
+      document.getElementById(this.getAttribute('data-digress-trigger')).classList.toggle('visible');
     }, false);
   }
 
