@@ -38,7 +38,6 @@ Option | Description | Default | Values
 ```position```  | (String) The position that a note will display, relative to its trigger. Additional positioning details can be applied via CSS. (See below.) | ```top``` | ```top, left, bottom, right```
 
 ## Styling / Positioning
-#### Triggers
-Triggers can be styled via their ```.digress-trigger``` class. Active triggers—that is, triggers whose note is visible—are given an ```.active``` class for additional styling.
-#### Notes
-Notes can be styled via their ```.digress-note``` class. Some basic styling is included in ```digress.css```, which can be modified or overridden as desired. The only **required** CSS rule for notes is ```position: absolute```, so they can be correctly aligned with their trigger element.
+Triggers can be styled via their ```.digress-trigger``` class, and notes can by styled via their ```.digress-note``` class. Active triggers—that is, triggers whose note is visible—are given an ```.active``` class for additional styling.
+
+Some basic default styling is included in ```digress.css```, and the file is commented in regards to which CSS rules are required for Digress to function properly, and which can be modified or overridden as desired.

@@ -1,22 +1,75 @@
-.digress-trigger {
-  position: relative;
-  cursor: pointer;
+/* REQUIRED STYLES
+   ========================================================================== */
+
+.digress-trigger,
+.digress-trigger:before,
+.digress-note {
+  box-sizing: border-box; /* KEEP! */
 }
-.digress-trigger.active { }
+
+.digress-trigger {
+  display: inline-block; /* `inline-block` or `block` */
+  position: relative; /* `relative` or `absolute` */
+}
+
+/* Can change height and/or width, but make sure `.digress-trigger` and
+   `.digress-trigger:before` are the same size. */
+.digress-trigger,
+.digress-trigger:before {
+  height: 20px;
+  width: 20px;
+}
 
 .digress-note {
-  position: absolute;
-  visibility: hidden;
-  width: 250px;
+  position: absolute; /* KEEP! */
+  visibility: hidden; /* KEEP! */
+}
+
+.digress-note.visible {
+  visibility: visible; /* KEEP! */
+}
+
+/* OPTIONAL STYLES — MODIFY AT YOUR DISCRETION
+   ========================================================================== */
+
+.digress-trigger:before {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  content: "※";
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 14px;
+  padding-top: 2px;
+  text-align: center;
+  vertical-align: text-top;
+
+  -webkit-transition: all 100ms linear;
+  -moz-transition: all 100ms linear;
+  -ms-transition: all 100ms linear;
+  -o-transition: all 100ms linear;
+  transition: all 100ms linear;
+}
+.digress-trigger.active:before {
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.digress-note {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-left: 0.5rem;
   max-height: 150px;
   overflow: scroll;
-  background-color: #fff;
   padding: 1rem;
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 250px;
   z-index: 20;
 }
 .digress-note.visible {
-  visibility: visible;
   -webkit-animation: digress-popin 250ms cubic-bezier(0.250, 0.250, 0.000, 1);
   -webkit-animation: digress-popin 250ms cubic-bezier(0.250, 0.250, 0.000, 1.395);
   -moz-animation: digress-popin 250ms cubic-bezier(0.250, 0.250, 0.000, 1.395);

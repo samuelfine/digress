@@ -1,6 +1,6 @@
 /*
  * Digress
- * Version 1.0.0
+ * Version 1.1.0
  *
  * Copyright(c) 2015 Samuel Fine <hi@samuelfine.com>
  * ISC Licensed
@@ -24,34 +24,39 @@ var digress = function() {
     var trig = {
       e: triggers[i] // HTML element
     };
-    // Math.ceil for reliable floating value precision
+
     // getBoundingClientRect() for viewport offset
     // scrollTop for document offset
     // parseInt() to remove any CSS values `100px`, `100rem`, etc.
-    trig.top = Math.ceil(trig.e.getBoundingClientRect().top + docElm.scrollTop);
-    trig.left = Math.ceil(trig.e.getBoundingClientRect().left + docElm.scrollLeft);
+    trig.top = trig.e.getBoundingClientRect().top + docElm.scrollTop;
+    trig.left = trig.e.getBoundingClientRect().left + docElm.scrollLeft;
     trig.width = parseInt(window.getComputedStyle(trig.e).width);
     trig.height = parseInt(window.getComputedStyle(trig.e).height);
     trig.position = trig.e.getAttribute('data-digress-position') || opts.position;
+    trig.note = trig.e.getAttribute('data-digress-trigger');
 
-    var note = {
-      e: document.getElementById(trig.e.getAttribute('data-digress-trigger'))
-    };
+    var note = {};
+    if(document.getElementById(trig.note)) {
+      note.e = document.getElementById(trig.note);
+    } else {
+      console.warn('DIGRESS: Cannot find note for trigger.', trig.e);
+      break;
+    }
     note.width = parseInt(window.getComputedStyle(note.e).width);
     note.height = parseInt(window.getComputedStyle(note.e).height);
 
     if(trig.position === 'right') {
-      note.e.style.top = trig.top - (note.height / 2) + 'px';
+      note.e.style.top = trig.top + (trig.height / 2) - (note.height / 2) + 'px';
       note.e.style.left = trig.left + trig.width + 'px';
     } else if (trig.position === 'bottom') {
       note.e.style.top = trig.top + trig.height + 'px';
-      note.e.style.left = trig.left - (note.width / 2) + trig.width + 'px';
+      note.e.style.left = trig.left - (note.width / 2) + (trig.width / 2) + 'px';
     } else if (trig.position === 'left') {
-      note.e.style.top = trig.top - (note.height / 2) + 'px';
+      note.e.style.top = trig.top + (trig.height / 2) - (note.height / 2) + 'px';
       note.e.style.left = trig.left - note.width + 'px';
     } else { // Default to top
       note.e.style.top = trig.top - note.height + 'px';
-      note.e.style.left = trig.left - (note.width / 2) + trig.width + 'px';
+      note.e.style.left = trig.left - (note.width / 2) + (trig.width / 2) + 'px';
     }
 
     trig.e.addEventListener('click', function() {
